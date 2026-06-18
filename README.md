@@ -3,7 +3,7 @@
 **Feasibility, Materials, and Design**
 
 Adam Androulidakis
-1 June 2022 · Conceptual draft
+[serpentchain@gmail.com](mailto:serpentchain@gmail.com) · 1 June 2022 · Conceptual draft
 
 ---
 
@@ -19,6 +19,7 @@ no optical-to-electronic-to-optical conversion.
 ## Read here
 
 - **[Read the paper](pshc.md)** — full working paper with figures
+- **[Download PDF](Research_Paper.pdf)**
 - **[Web version](pshc.html)** (serve via a local web server)
 
 ---
