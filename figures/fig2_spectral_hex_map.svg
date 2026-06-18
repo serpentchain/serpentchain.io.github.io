@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="680" viewBox="0 0 760 680" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="0" y="0" width="760" height="680" fill="#ffffff"/>
+  <text x="380" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#111">FIG. 2 — Spectral Hexadecimal Encoding Map</text>
+  <text x="380" y="56" text-anchor="middle" font-size="13" fill="#444">15 distinct wavelengths + "dark" (absence of light) = 16 symbols = one hex digit</text>
+
+  <!-- Header row -->
+  <g font-size="13" font-weight="bold" fill="#111">
+    <rect x="40" y="74" width="80" height="30" fill="#eef2f7" stroke="#9aa7b4"/>
+    <rect x="120" y="74" width="120" height="30" fill="#eef2f7" stroke="#9aa7b4"/>
+    <rect x="240" y="74" width="120" height="30" fill="#eef2f7" stroke="#9aa7b4"/>
+    <rect x="360" y="74" width="360" height="30" fill="#eef2f7" stroke="#9aa7b4"/>
+    <text x="80"  y="94" text-anchor="middle">Hex</text>
+    <text x="180" y="94" text-anchor="middle">Channel</text>
+    <text x="300" y="94" text-anchor="middle">&#955; (nm)</text>
+    <text x="540" y="94" text-anchor="middle">Spectral band (one-hot)</text>
+  </g>
+
+  <!-- Rows: y starts at 104, height 35 each, 16 rows -->
+  <!-- Symbol 0 = dark -->
+  <g font-size="13">
+    <rect x="40" y="104" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/>
+    <rect x="120" y="104" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/>
+    <rect x="240" y="104" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/>
+    <rect x="360" y="104" width="360" height="35" fill="#1b1b1b" stroke="#cdd5dd"/>
+    <text x="80"  y="126" text-anchor="middle" font-weight="bold" fill="#111">0</text>
+    <text x="180" y="126" text-anchor="middle" fill="#111">DARK</text>
+    <text x="300" y="126" text-anchor="middle" fill="#111">none</text>
+    <text x="540" y="126" text-anchor="middle" fill="#bbb" font-style="italic">absence of light</text>
+  </g>
+
+  <!-- Channels 1..F -->
+  <!-- y, hex, ch, nm, color -->
+  <g font-size="13">
+    <!-- 1 -->
+    <rect x="40"  y="139" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="161" text-anchor="middle" font-weight="bold">1</text>
+    <rect x="120" y="139" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="161" text-anchor="middle">CH1</text>
+    <rect x="240" y="139" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="161" text-anchor="middle">425</text>
+    <rect x="360" y="139" width="360" height="35" fill="#7d00ff" stroke="#cdd5dd"/>
+    <!-- 2 -->
+    <rect x="40"  y="174" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="196" text-anchor="middle" font-weight="bold">2</text>
+    <rect x="120" y="174" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="196" text-anchor="middle">CH2</text>
+    <rect x="240" y="174" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="196" text-anchor="middle">444</text>
+    <rect x="360" y="174" width="360" height="35" fill="#4b00ff" stroke="#cdd5dd"/>
+    <!-- 3 -->
+    <rect x="40"  y="209" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="231" text-anchor="middle" font-weight="bold">3</text>
+    <rect x="120" y="209" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="231" text-anchor="middle">CH3</text>
+    <rect x="240" y="209" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="231" text-anchor="middle">463</text>
+    <rect x="360" y="209" width="360" height="35" fill="#0040ff" stroke="#cdd5dd"/>
+    <!-- 4 -->
+    <rect x="40"  y="244" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="266" text-anchor="middle" font-weight="bold">4</text>
+    <rect x="120" y="244" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="266" text-anchor="middle">CH4</text>
+    <rect x="240" y="244" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="266" text-anchor="middle">482</text>
+    <rect x="360" y="244" width="360" height="35" fill="#00a0ff" stroke="#cdd5dd"/>
+    <!-- 5 -->
+    <rect x="40"  y="279" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="301" text-anchor="middle" font-weight="bold">5</text>
+    <rect x="120" y="279" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="301" text-anchor="middle">CH5</text>
+    <rect x="240" y="279" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="301" text-anchor="middle">501</text>
+    <rect x="360" y="279" width="360" height="35" fill="#00d6c0" stroke="#cdd5dd"/>
+    <!-- 6 -->
+    <rect x="40"  y="314" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="336" text-anchor="middle" font-weight="bold">6</text>
+    <rect x="120" y="314" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="336" text-anchor="middle">CH6</text>
+    <rect x="240" y="314" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="336" text-anchor="middle">520</text>
+    <rect x="360" y="314" width="360" height="35" fill="#00e000" stroke="#cdd5dd"/>
+    <!-- 7 -->
+    <rect x="40"  y="349" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="371" text-anchor="middle" font-weight="bold">7</text>
+    <rect x="120" y="349" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="371" text-anchor="middle">CH7</text>
+    <rect x="240" y="349" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="371" text-anchor="middle">539</text>
+    <rect x="360" y="349" width="360" height="35" fill="#62e000" stroke="#cdd5dd"/>
+    <!-- 8 -->
+    <rect x="40"  y="384" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="406" text-anchor="middle" font-weight="bold">8</text>
+    <rect x="120" y="384" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="406" text-anchor="middle">CH8</text>
+    <rect x="240" y="384" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="406" text-anchor="middle">558</text>
+    <rect x="360" y="384" width="360" height="35" fill="#aee000" stroke="#cdd5dd"/>
+    <!-- 9 -->
+    <rect x="40"  y="419" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="441" text-anchor="middle" font-weight="bold">9</text>
+    <rect x="120" y="419" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="441" text-anchor="middle">CH9</text>
+    <rect x="240" y="419" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="441" text-anchor="middle">577</text>
+    <rect x="360" y="419" width="360" height="35" fill="#f0e000" stroke="#cdd5dd"/>
+    <!-- A -->
+    <rect x="40"  y="454" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="476" text-anchor="middle" font-weight="bold">A</text>
+    <rect x="120" y="454" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="476" text-anchor="middle">CH10</text>
+    <rect x="240" y="454" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="476" text-anchor="middle">596</text>
+    <rect x="360" y="454" width="360" height="35" fill="#ffd000" stroke="#cdd5dd"/>
+    <!-- B -->
+    <rect x="40"  y="489" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="511" text-anchor="middle" font-weight="bold">B</text>
+    <rect x="120" y="489" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="511" text-anchor="middle">CH11</text>
+    <rect x="240" y="489" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="511" text-anchor="middle">615</text>
+    <rect x="360" y="489" width="360" height="35" fill="#ffa000" stroke="#cdd5dd"/>
+    <!-- C -->
+    <rect x="40"  y="524" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="546" text-anchor="middle" font-weight="bold">C</text>
+    <rect x="120" y="524" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="546" text-anchor="middle">CH12</text>
+    <rect x="240" y="524" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="546" text-anchor="middle">634</text>
+    <rect x="360" y="524" width="360" height="35" fill="#ff6a00" stroke="#cdd5dd"/>
+    <!-- D -->
+    <rect x="40"  y="559" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="581" text-anchor="middle" font-weight="bold">D</text>
+    <rect x="120" y="559" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="581" text-anchor="middle">CH13</text>
+    <rect x="240" y="559" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="581" text-anchor="middle">653</text>
+    <rect x="360" y="559" width="360" height="35" fill="#ff3000" stroke="#cdd5dd"/>
+    <!-- E -->
+    <rect x="40"  y="594" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="616" text-anchor="middle" font-weight="bold">E</text>
+    <rect x="120" y="594" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="616" text-anchor="middle">CH14</text>
+    <rect x="240" y="594" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="616" text-anchor="middle">672</text>
+    <rect x="360" y="594" width="360" height="35" fill="#e00000" stroke="#cdd5dd"/>
+    <!-- F -->
+    <rect x="40"  y="629" width="80" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="80" y="651" text-anchor="middle" font-weight="bold">F</text>
+    <rect x="120" y="629" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="180" y="651" text-anchor="middle">CH15</text>
+    <rect x="240" y="629" width="120" height="35" fill="#fafbfc" stroke="#cdd5dd"/><text x="300" y="651" text-anchor="middle">690</text>
+    <rect x="360" y="629" width="360" height="35" fill="#b00000" stroke="#cdd5dd"/>
+  </g>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="560" viewBox="0 0 860 560" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="0" y="0" width="860" height="560" fill="#ffffff"/>
+  <text x="430" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#111">FIG. 4 — Spectral Gate (Optical Transistor) Cross-Section</text>
+  <text x="430" y="56" text-anchor="middle" font-size="13" fill="#444">A control beam at &#955;c switches a photoswitchable/nonlinear coating, gating a signal beam at &#955;s</text>
+
+  <!-- Substrate (prism facet / waveguide) -->
+  <rect x="180" y="300" width="500" height="70" fill="#e8eef5" stroke="#7d8ea0" stroke-width="2"/>
+  <text x="430" y="345" text-anchor="middle" font-size="13" fill="#333">40 transparent substrate (prism facet / waveguide)</text>
+
+  <!-- Active coating -->
+  <rect x="180" y="270" width="500" height="30" fill="#cdb4f0" stroke="#7a5bb0" stroke-width="2"/>
+  <text x="430" y="290" text-anchor="middle" font-size="12" fill="#3a2a55">42 photoswitchable / nonlinear coating (e.g., diarylethene film)</text>
+
+  <!-- Control beam (gate) coming down -->
+  <line x1="430" y1="90" x2="430" y2="268" stroke="#7d00ff" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="445" y="150" font-size="13" fill="#7d00ff" font-weight="bold">44 control beam &#955;c</text>
+  <text x="445" y="168" font-size="11" fill="#666">("gate" — sets state)</text>
+
+  <!-- Signal beam in (source) -->
+  <line x1="60" y1="285" x2="180" y2="285" stroke="#ffa000" stroke-width="6" marker-end="url(#arrow)"/>
+  <text x="60" y="270" font-size="13" fill="#cc7a00" font-weight="bold">46 signal in &#955;s</text>
+  <text x="60" y="255" font-size="11" fill="#666">("source")</text>
+
+  <!-- Signal beam out (drain) - gated -->
+  <line x1="680" y1="285" x2="800" y2="285" stroke="#ffa000" stroke-width="6" marker-end="url(#arrow)" stroke-dasharray="10 6"/>
+  <text x="700" y="270" font-size="13" fill="#cc7a00" font-weight="bold">48 signal out</text>
+  <text x="700" y="255" font-size="11" fill="#666">("drain" — gated)</text>
+
+  <!-- Transistor analogy box -->
+  <rect x="150" y="410" width="560" height="120" rx="8" fill="#f7f9fc" stroke="#aab6c4"/>
+  <text x="430" y="434" text-anchor="middle" font-size="13" font-weight="bold" fill="#111">Transistor analogy</text>
+  <g font-size="12" fill="#333">
+    <text x="180" y="462">• Control beam &#955;c  &#8594;  GATE: changes molecular isomer / refractive index</text>
+    <text x="180" y="484">• Signal in &#955;s  &#8594;  SOURCE: probe beam at a different wavelength</text>
+    <text x="180" y="506">• Signal out  &#8594;  DRAIN: transmitted (ON) or absorbed (OFF) per gate state</text>
+    <text x="180" y="524" font-style="italic" fill="#555">Gain + cascadability provided by control-beam pump (see FIG. 8).</text>
+  </g>
+
+  <!-- State indicator -->
+  <g font-size="11" fill="#444">
+    <rect x="700" y="300" width="120" height="70" rx="6" fill="#fff" stroke="#cdd5dd"/>
+    <text x="760" y="318" text-anchor="middle" font-weight="bold" fill="#111">State</text>
+    <text x="710" y="338">&#955;c OFF &#8594; pass</text>
+    <text x="710" y="356">&#955;c ON &#8594; block</text>
+  </g>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 z" fill="#333"/>
+    </marker>
+  </defs>
+</svg>

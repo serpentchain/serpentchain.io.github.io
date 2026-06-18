@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="520" viewBox="0 0 860 520" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="0" y="0" width="860" height="520" fill="#ffffff"/>
+  <text x="430" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#111">FIG. 3 — Prism/Grating Spectral Demultiplexer</text>
+  <text x="430" y="56" text-anchor="middle" font-size="13" fill="#444">White light is dispersed into 15 wavelength channels and isolated by a slit/aperture array</text>
+
+  <!-- White light source -->
+  <circle cx="70" cy="250" r="22" fill="#ffffff" stroke="#888" stroke-width="2"/>
+  <text x="70" y="255" text-anchor="middle" font-size="11" fill="#333">10</text>
+  <text x="70" y="300" text-anchor="middle" font-size="11" fill="#444">white</text>
+  <text x="70" y="314" text-anchor="middle" font-size="11" fill="#444">source</text>
+
+  <!-- Collimator -->
+  <rect x="120" y="225" width="14" height="50" rx="4" fill="#dfe7f0" stroke="#7d8ea0"/>
+  <text x="127" y="300" text-anchor="middle" font-size="10" fill="#444">12 collimator</text>
+
+  <!-- Incoming white beam -->
+  <line x1="92" y1="250" x2="120" y2="250" stroke="#333" stroke-width="3"/>
+  <line x1="134" y1="250" x2="245" y2="250" stroke="#bbbbbb" stroke-width="6"/>
+  <text x="185" y="240" text-anchor="middle" font-size="10" fill="#777">white (all &#955;)</text>
+
+  <!-- Prism (triangle) -->
+  <polygon points="250,310 330,310 290,200" fill="#e8f0fb" stroke="#5b7a99" stroke-width="2"/>
+  <text x="290" y="335" text-anchor="middle" font-size="11" fill="#444">14 dispersive prism / grating</text>
+
+  <!-- Dispersed rays fanning out -->
+  <g stroke-width="3">
+    <line x1="305" y1="255" x2="600" y2="150" stroke="#7d00ff"/>
+    <line x1="305" y1="256" x2="600" y2="165" stroke="#0040ff"/>
+    <line x1="305" y1="257" x2="600" y2="180" stroke="#00a0ff"/>
+    <line x1="305" y1="258" x2="600" y2="195" stroke="#00d6c0"/>
+    <line x1="305" y1="259" x2="600" y2="210" stroke="#00e000"/>
+    <line x1="305" y1="260" x2="600" y2="225" stroke="#62e000"/>
+    <line x1="305" y1="261" x2="600" y2="240" stroke="#aee000"/>
+    <line x1="305" y1="262" x2="600" y2="255" stroke="#f0e000"/>
+    <line x1="305" y1="263" x2="600" y2="270" stroke="#ffd000"/>
+    <line x1="305" y1="264" x2="600" y2="285" stroke="#ffa000"/>
+    <line x1="305" y1="265" x2="600" y2="300" stroke="#ff6a00"/>
+    <line x1="305" y1="266" x2="600" y2="315" stroke="#ff3000"/>
+    <line x1="305" y1="267" x2="600" y2="330" stroke="#e00000"/>
+    <line x1="305" y1="268" x2="600" y2="345" stroke="#b00000"/>
+    <line x1="305" y1="269" x2="600" y2="360" stroke="#800000"/>
+  </g>
+
+  <!-- Slit / aperture array -->
+  <rect x="600" y="135" width="16" height="245" fill="#2b2b2b"/>
+  <g fill="#ffffff">
+    <rect x="600" y="148" width="16" height="6"/>
+    <rect x="600" y="163" width="16" height="6"/>
+    <rect x="600" y="178" width="16" height="6"/>
+    <rect x="600" y="193" width="16" height="6"/>
+    <rect x="600" y="208" width="16" height="6"/>
+    <rect x="600" y="223" width="16" height="6"/>
+    <rect x="600" y="238" width="16" height="6"/>
+    <rect x="600" y="253" width="16" height="6"/>
+    <rect x="600" y="268" width="16" height="6"/>
+    <rect x="600" y="283" width="16" height="6"/>
+    <rect x="600" y="298" width="16" height="6"/>
+    <rect x="600" y="313" width="16" height="6"/>
+    <rect x="600" y="328" width="16" height="6"/>
+    <rect x="600" y="343" width="16" height="6"/>
+    <rect x="600" y="358" width="16" height="6"/>
+  </g>
+  <text x="608" y="402" text-anchor="middle" font-size="11" fill="#444">16 slit/aperture array</text>
+
+  <!-- Output channels into fibers -->
+  <g stroke-width="3">
+    <line x1="616" y1="151" x2="700" y2="151" stroke="#7d00ff"/>
+    <line x1="616" y1="211" x2="700" y2="211" stroke="#00e000"/>
+    <line x1="616" y1="271" x2="700" y2="271" stroke="#ffd000"/>
+    <line x1="616" y1="361" x2="700" y2="361" stroke="#800000"/>
+  </g>
+  <g font-size="11" fill="#444">
+    <text x="730" y="155">CH1 (425 nm)</text>
+    <text x="730" y="215">CH5 (501 nm)</text>
+    <text x="730" y="275">CH9 (577 nm)</text>
+    <text x="730" y="345" font-style="italic">&#8942; 15 channels</text>
+    <text x="730" y="365">CH15 (690 nm)</text>
+  </g>
+  <text x="745" y="430" text-anchor="middle" font-size="11" fill="#444">18 to fiber routing fabric</text>
+</svg>
