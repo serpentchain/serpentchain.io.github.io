@@ -1,0 +1,40 @@
+@page { size: A4; margin: 20mm 18mm 22mm 18mm; }
+:root { --ink:#15202b; --muted:#5a6b7a; --accent:#4326a6; --accent2:#0e7c7b; --border:#c9d2dc; --code-bg:#f2f4f8; }
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; background:#fff; color:var(--ink); }
+body {
+  font-family: "Georgia", "Cambria", "Times New Roman", serif;
+  font-size: 11pt; line-height: 1.5;
+  max-width: 820px; margin: 0 auto; padding: 24px 28px 60px;
+}
+.paper h1:first-of-type { font-size: 21pt; line-height:1.2; text-align:center; margin:.2em 0 .35em; border:none; }
+.paper > .paper-meta { text-align:center; color:var(--muted); font-size:10.5pt; margin-bottom:1.4em; }
+h1,h2,h3,h4 { font-family:"Helvetica Neue","Arial",sans-serif; color:#10202e; line-height:1.25; }
+h1 { font-size:18pt; }
+h2 { font-size:14.5pt; margin-top:1.5em; padding-bottom:.2em; border-bottom:1px solid var(--border); page-break-after:avoid; }
+h3 { font-size:12.5pt; margin-top:1.2em; color:#23303c; page-break-after:avoid; }
+h4 { font-size:11pt; color:var(--muted); page-break-after:avoid; }
+p { orphans:3; widows:3; }
+a { color:var(--accent); text-decoration:none; }
+strong { color:#101820; }
+em { color:#26323d; }
+code { background:var(--code-bg); border-radius:4px; padding:.1em .35em; font-family:"Consolas",monospace; font-size:.88em; }
+pre { background:var(--code-bg); padding:10px 12px; border-radius:8px; overflow-x:auto; page-break-inside:avoid; }
+pre code { background:none; padding:0; }
+blockquote {
+  margin:1em 0; padding:.55em 1em; border-left:3px solid var(--accent2);
+  background:#f3fafa; color:#1f2d33; border-radius:0 6px 6px 0; page-break-inside:avoid; font-size:.97em;
+}
+table { border-collapse:collapse; width:100%; margin:1em 0; font-size:9.5pt; page-break-inside:avoid;
+        font-family:"Helvetica Neue","Arial",sans-serif; }
+th,td { border:1px solid var(--border); padding:5px 8px; text-align:left; vertical-align:top; }
+th { background:#eef2f7; }
+tr:nth-child(even) td { background:#fafbfc; }
+hr { border:none; border-top:1px solid var(--border); margin:1.6em 0; }
+figure.fig { margin:18px auto; text-align:center; page-break-inside:avoid; }
+figure.fig img { max-width:100%; height:auto; max-height:230mm; }
+figure.fig figcaption { margin-top:6px; font-size:9.5pt; color:var(--muted); font-style:italic; }
+.mermaid { text-align:center; margin:16px 0; page-break-inside:avoid; }
+.mermaid svg { max-width:100%; height:auto; }
+ul,ol { padding-left:1.4em; }
+li { margin:.2em 0; }
