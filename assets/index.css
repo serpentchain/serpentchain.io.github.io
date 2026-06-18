@@ -1,0 +1,143 @@
+:root {
+  --ink: #1a1a1a;
+  --muted: #555;
+  --faint: #777;
+  --accent: #6b1f1f;
+  --rule: #222;
+  --line: #dcdcd4;
+  --bg: #f6f5f1;
+  --panel: #fffdf9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sheet {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 64px 72px 80px;
+  min-height: 100vh;
+  background: var(--panel);
+  border-inline: 1px solid var(--line);
+}
+
+.eyebrow {
+  margin: 0 0 26px;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 31px;
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  margin: 0 0 28px;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.byline {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.meta {
+  margin: 0;
+  font-size: 14px;
+  color: var(--faint);
+}
+
+.meta a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.meta a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  border: 0;
+  border-top: 1.5px solid var(--rule);
+  margin: 30px 0 26px;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.abstract {
+  margin: 0 0 26px;
+  text-align: justify;
+}
+
+.keywords {
+  margin: 0 0 34px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.links {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.links a {
+  padding: 11px 22px;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--rule);
+  color: var(--panel);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.links a:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.note {
+  margin: 28px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--faint);
+}
+
+@media (max-width: 640px) {
+  .sheet {
+    padding: 40px 26px 56px;
+    border-inline: 0;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+}
