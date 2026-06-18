@@ -5,7 +5,9 @@
 
 **Author:** Adam Androulidakis<br>
 **Email:** serpentchain@gmail.com<br>
-**Date:** 1 June 2022
+**Date:** 1 June 2022<br>
+**Updated:** 17 June 2026<br>
+
 
 > **Note on scope and rigor.** This is a *concept, design and feasibility* paper, not an
 > experimental report. It contains no original laboratory data. Its purpose is to
@@ -30,9 +32,8 @@ component by component: the broadband source and spectral encoding, the dispersi
 fabric, the gating element, the construction of logic and hexadecimal-arithmetic primitives,
 and end-to-end system behavior. Spectral encoding and passive routing with prisms, mirrors,
 and fiber are physically sound. The gating element is the element that determines whether the
-architecture can compute: it must provide gain and let one beam control another. We examine
-candidate gates — including whether a passive pigment coating could serve, and conclude it
-cannot — and identify **control-switchable coatings** as the workable choice: photochromic
+architecture can compute: it must provide gain and let one beam control another. We identify
+**control-switchable coatings** as the gating element: photochromic
 photoswitches (e.g., diarylethenes), saturable absorbers (e.g., graphene), optically nonlinear
 (Kerr/χ³) media, and chalcogenide phase-change films, in which a control beam at one wavelength
 gates a signal beam at another, yielding a genuine optical transistor with gain, fan-out,
@@ -58,7 +59,7 @@ they interface with optical communication links. Optical computing seeks to perf
 computation in the optical domain itself, exploiting the bandwidth, parallelism, and low
 propagation loss of light.
 
-This paper studies a specific and unusually direct proposal: encode information **in color**.
+This paper develops a specific and unusually direct idea: encode information **in color**.
 Rather than representing bits as voltage levels, represent a hexadecimal digit as one of
 fifteen wavelengths (or "dark"), generate those wavelengths by dispersing white light, and
 compute by selectively gating wavelengths with coated optical elements. The appeal is
@@ -67,7 +68,7 @@ naturally manipulate — and the promise of a machine that never leaves the opti
 
 We ask three questions:
 
-1. **Is it physically valid?** Which elements of the proposal obey known physics, and which
+1. **Is it physically valid?** Which elements of the design obey known physics, and which
    do not?
 2. **Does it already exist?** What prior art covers wavelength-based and all-optical logic?
 3. **If not, how could it be built?** What real materials and architecture would make a
@@ -75,16 +76,16 @@ We ask three questions:
 
 Our central finding is that the architecture is feasible in principle: with an active,
 control-switchable coating as the gating element, every stage from white light to
-hexadecimal arithmetic rests on sound physics. A passive pigment coating — one candidate we
-evaluate for the gate — cannot provide gain or let one beam control another, so we set it
-aside in favor of active coatings. That is a design choice that completes the concept, not a
-barrier to it; the substantive open question is a system-level one (the cascade energy, gain,
-and crosstalk budget), not the viability of the architecture itself.
+hexadecimal arithmetic rests on sound physics. The gate must be active — a control beam at one
+wavelength changing the response seen by a signal beam at another — and several material
+classes provide exactly this behavior. The substantive open question is a system-level one
+(the cascade energy, gain, and crosstalk budget), not the viability of the architecture itself.
 
 ### 1.1 Contributions
 
-- A clear-eyed **feasibility analysis** separating valid claims (dispersion, one-hot
-  spectral encoding, optical routing) from invalid ones (passive pigment gain/logic).
+- A clear-eyed **feasibility analysis** of each component, establishing which stages rest on
+  settled physics (dispersion, one-hot spectral encoding, optical routing) and which require
+  an active element (the gate).
 - A **one-hot spectral-hexadecimal encoding** (15 wavelengths + dark = 16 symbols) and its
   rationale.
 - A **spectral-gate** (optical-transistor) element and a survey of **real coating
@@ -149,7 +150,7 @@ That synthesis is the subject of this paper.
 
 ## 3. Physical-Feasibility Analysis
 
-We separate the proposal into claims and assess each against established physics.
+We separate the concept into claims and assess each against established physics.
 
 ### 3.1 What is valid
 
@@ -158,24 +159,23 @@ We separate the proposal into claims and assess each against established physics
 | White light → ~15 discrete wavelength bands | Valid | Chromatic dispersion (prism) or diffraction (grating) angularly separates wavelengths; a slit/aperture array isolates discrete bands. |
 | Hexadecimal as 15 wavelengths + "dark" | Valid | 15 present-wavelength symbols + 1 absence symbol = 16 = one hex digit; a legitimate one-hot code. |
 | Routing with mirrors, prisms, fiber | Valid | Geometric optics and waveguiding; WDM already multiplexes many wavelengths per fiber. |
-| Pigment zones selectively pass/absorb wavelengths | Valid | Wavelength-selective absorption (Beer–Lambert); suitable for encoding, routing, masking. |
+| Wavelength-selective coatings pass/absorb chosen bands | Valid | Wavelength-selective absorption (Beer–Lambert); suitable for static encoding, routing, masking. |
 
-### 3.2 What is not valid as originally stated
+### 3.2 Where a passive element is insufficient
 
 | Claim | Verdict | Why it fails |
 | --- | --- | --- |
-| **Passive pigments "behave like transistors"** | Invalid | A transistor needs **gain** and **one signal controlling another**. Pigments/dyes are *linear, passive absorbers*: output is proportional to input and one beam cannot control a second. Photons do not interact in a linear medium. |
-| A purely passive prism+pigment network is a universal computer | Invalid | Without an active/nonlinear element there is **no gain, fan-out, restoration, or cascadability** (failing Miller's criteria). Such a network performs only fixed **filtering/masking** logic, not programmable computation. |
+| A **passive, linear coating can act as a transistor** | Invalid | A transistor needs **gain** and **one signal controlling another**. Linear, passive absorbers (dyes, fixed filters) produce output proportional to input, and one beam cannot control a second — photons do not interact in a linear medium. |
+| A purely passive prism-and-filter network is a universal computer | Invalid | Without an active/nonlinear element there is **no gain, fan-out, restoration, or cascadability** (failing Miller's criteria). Such a network performs only fixed **filtering/masking** logic, not programmable computation. |
 
-### 3.3 The resolution
+### 3.3 The active-gate requirement
 
-The inventor's *architecture* — white light, prisms, mirrors, fiber, and a **coating on each
-gate** — is preserved. The single necessary change is the **nature of the coating**: replace
-the inert pigment with a **photoswitchable or optically nonlinear material** in which a
-**control beam at λc changes the response seen by a signal beam at λs**. By definition this is
-light controlling light — an optical transistor (Sections 4–5). This conversion is what moves
-the system from "passive optical filter" to "programmable optical computer," and it is the
-core scientific point of the paper.
+The architecture — white light, prisms, mirrors, fiber, and a **coating on each gate** — rests
+on sound physics provided the gate coating is **active**: a **photoswitchable or optically
+nonlinear material** in which a **control beam at λc changes the response seen by a signal beam
+at λs**. By definition this is light controlling light — an optical transistor (Sections 4–5).
+An active gate is what makes the system a **programmable optical computer** rather than a
+passive optical filter, and it is the core scientific point of the paper.
 
 ---
 
@@ -218,6 +218,17 @@ independently filtered, routed, and gated; (ii) symbol detection reduces to pres
 thresholding; and (iii) multiple digits can share a fiber by WDM. Multi-digit words use
 spatial parallelism (one path per digit) or time multiplexing under the optical clock.
 
+The choice of **base sixteen specifically** is motivated by data representation rather than
+optics alone. Hexadecimal is already the conventional shorthand for binary data — one hex digit
+maps to exactly four bits, and bytes, addresses, and machine words are routinely expressed in
+hex. Computing natively in base sixteen therefore keeps the machine's internal representation
+aligned with how data is already written and stored, so that — should photonic storage
+technologies for this architecture be produced — data held in base sixteen could be read,
+written, and operated on with **less translation and obfuscation** between the storage layer,
+the applications that consume the data, and the optical compute layer. The radix is chosen to
+minimize representational mismatch across that stack, not merely to fit the available channel
+count.
+
 ### 4.3 Source and demultiplexer
 
 A broadband source (supercontinuum, broadband superluminescent assembly, or phosphor-converted
@@ -251,15 +262,15 @@ control = gate, signal-in = source, signal-out = drain.
 | Nonlinear (Kerr/χ³, χ²) media | Cross-phase modulation, four-wave mixing | Chalcogenide/silicon waveguides; BBO, KTP, LiNbO₃ | Basis of true high-speed optical transistors; resonators enhance |
 | Phase-change materials | Optically switched amorphous↔crystalline | Ge₂Sb₂Te₅ (GST) | Non-volatile; doubles as memory |
 
-A purely passive, inert-pigment coating is retained only as a **fixed masking** element
-(static routing or read-only masks); it has no gain and is not cascadable.
+A passive, linear coating has no gain and is not cascadable; such coatings serve only as
+**fixed masking** elements (static routing or read-only masks).
 
 ### 5.3 Meeting the acceptance criteria
 
 Gain for **fan-out** and **logic-level restoration** is supplied by an optical pump (Section
 7.3); **input/output isolation** follows from spectral separation of λc and λs; **cascadability**
-and **loss-independent levels** follow from restoration at each stage. Thus the spectral gate,
-unlike a pigment, can satisfy Miller's five criteria.
+and **loss-independent levels** follow from restoration at each stage. Thus the spectral gate
+can satisfy Miller's five criteria.
 
 ---
 
@@ -381,9 +392,6 @@ quantified before any strong performance claim:
 6. **Footprint and integration.** Free-space prism/mirror assemblies are bulky and
    alignment-sensitive; an integrated-photonics embodiment (arrayed-waveguide gratings, microring
    spectral gates with switchable cladding) is likely necessary for scale.
-7. **Passive-variant ceiling.** The purely passive pigment embodiment cannot be made
-   programmable; it is fundamentally limited to fixed masking. This is a hard physical bound,
-   not an engineering detail.
 
 Honest summary: **a programmable fully-photonic spectral-hex computer is plausible only with
 active gate materials**; quantitative competitiveness with electronics is unproven and is the
@@ -467,11 +475,10 @@ passive routing fabric (prisms, mirrors, fiber, demultiplexers) are physically v
 on established optics. The gating element — the one stage that must supply gain and let one
 beam control another — is realizable with an **active** coating (photochromic,
 saturable-absorbing, nonlinear, or phase-change), which behaves as a genuine optical transistor
-meeting the accepted criteria for logic. Among the gate options we evaluated, a passive pigment
-coating is the one that does not work — it is a linear absorber with no gain — so we adopt an
-active coating instead; this is a material choice internal to the gate, not a limit on the
-architecture. On top of such gates the logic and hexadecimal-arithmetic primitives, and a
-non-von-Neumann dataflow organization, follow constructively.
+meeting the accepted criteria for logic. The choice among these active materials is internal
+to the gate, not a limit on the architecture. On top of such gates the logic and
+hexadecimal-arithmetic primitives, and a non-von-Neumann dataflow organization, follow
+constructively.
 
 The architecture is therefore **feasible in principle**: no step in the chain from white light
 to hexadecimal arithmetic violates known physics, provided the gate is active. What remains
@@ -502,7 +509,6 @@ question — the proper subject of the future work above.
    cross-phase modulation, four-wave mixing).
 
 > Disclaimer: 
-
 > Citations are informal and provided for orientation
 
 > There may be inaccuracies in this draft
