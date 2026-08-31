@@ -67,6 +67,17 @@ body {
   min-height: 100vh;
 }
 
+img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.portrait {
+    height: 693px;
+    width: 699px;
+}
+
+
 a {
   color: var(--cyan);
   text-decoration: none;
