@@ -16,6 +16,7 @@
 
 <body>
   <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch theme">cyberpunk</button>
+  <button id="to-top" class="to-top" type="button" aria-label="Back to top" hidden>top</button>
   <main class="sheet">
     
     <!-- ===== Site header ===== -->
@@ -26,9 +27,12 @@
 
     <hr />
 
-    <!-- ===== Posts =====
-         To add a new post, copy one <article class="post"> ... </article>
-         block below and edit its contents. Newest posts go at the top. -->
+
+    <nav class="post-index" aria-label="Post index">
+      <p class="post-index-title">Index</p>
+      <ol id="post-index-list" class="post-index-list"></ol>
+    </nav>
+
     <section class="posts">
 
 
@@ -41,7 +45,7 @@
         <p class="post-summary">
 	
          You must provide your legitimately sourced copy of Final Fantasy (USA) for the NES -serpentchain 
-	</br>
+	      </br>
         <img src="https://img.itch.zone/aW1hZ2UvNTE2Mjg1OC8zMDkxMjU5NS5qcGc=/347x500/v7yPiZ.jpg" alt="final fantasy gb title screen" /> </br>
 	<img src="https://img.itch.zone/aW1hZ2UvNTE2Mjg1OC8zMDkxMjYwMC5qcGc=/347x500/h93Hrg.jpg" alt="final fantasy gb party creation" /> </br> 
 	<img src="https://img.itch.zone/aW1hZ2UvNTE2Mjg1OC8zMDkxMjYwNy5qcGc=/347x500/keivws.jpg" alt="final fantasy gb battle screen" />  </br> 
@@ -241,6 +245,73 @@
       apply(current);
       btn.addEventListener("click", function () {
         apply(current === "terminal" ? "cyberpunk" : "terminal");
+      });
+    })();
+
+    (function () {
+      var MONTHS = ["january", "february", "march", "april", "may", "june", "july",
+        "august", "september", "october", "november", "december"];
+      var list = document.getElementById("post-index-list");
+      var posts = document.querySelectorAll(".posts .post");
+
+      function clean(text) {
+        return text.replace(/\s+/g, " ").trim();
+      }
+
+      function pad(n) {
+        return (n < 10 ? "0" : "") + n;
+      }
+
+      function toMMDDYYYY(text) {
+        var m = /(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})/.exec(text);
+        var month = m ? MONTHS.indexOf(m[2].toLowerCase()) + 1 : 0;
+        return month ? pad(month) + pad(+m[1]) + m[3] : "";
+      }
+
+      function uniqueId(name) {
+        var base = "post-" + (name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "item");
+        var id = base;
+        for (var n = 2; document.getElementById(id); n++) id = base + "-" + n;
+        return id;
+      }
+
+      Array.prototype.forEach.call(posts, function (post) {
+        var eyebrow = post.querySelector(".eyebrow") || post.querySelector(".post-title");
+        var meta = post.querySelector(".post-meta");
+        var name = eyebrow ? clean(eyebrow.textContent) : "";
+        var date = meta ? toMMDDYYYY(meta.textContent) : "";
+        if (!name) return;
+        if (!post.id) post.id = uniqueId(name);
+
+        var a = document.createElement("a");
+        a.href = "#" + post.id;
+        if (date) {
+          var span = document.createElement("span");
+          span.className = "post-index-date";
+          span.textContent = date;
+          a.appendChild(span);
+          a.appendChild(document.createTextNode(" - "));
+        }
+        a.appendChild(document.createTextNode(name));
+
+        var li = document.createElement("li");
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+    })();
+
+    (function () {
+      var btn = document.getElementById("to-top");
+
+      function update() {
+        btn.hidden = window.scrollY <= 300;
+      }
+
+      window.addEventListener("scroll", update, { passive: true });
+      update();
+
+      btn.addEventListener("click", function () {
+        window.scrollTo(0, 0);
       });
     })();
   </script>
