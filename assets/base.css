@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+img {
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.portrait {
+  height: 693px;
+  width: 699px;
+}
+
+/* ===== Theme toggle + back-to-top buttons ===== */
+.theme-toggle,
+.to-top {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 20;
+  cursor: pointer;
+}
+
+/* Shown by script once the page is scrolled down */
+.to-top {
+  top: auto;
+  bottom: 1rem;
+}
+
+/* ===== Posts ===== */
+.post {
+  scroll-margin-top: 1.5rem;
+}
+
+/* ===== Post index ===== */
+.post-index-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hanging indent so wrapped names line up after "MMDDYYYY - "
+   (needs a monospace font on the index) */
+.post-index-list a {
+  display: block;
+  padding-left: 11ch;
+  text-indent: -11ch;
+  border-bottom: none;
+}
+
+/* Wide screens: pin the index to the left and keep the posts clear of it */
+@media (min-width: 64rem) {
+  .post-index {
+    position: fixed;
+    top: var(--index-top, 4rem);
+    left: 1.5rem;
+    z-index: 2;
+    width: 16rem;
+    max-height: calc(100vh - var(--index-top, 4rem) - 1.5rem);
+    overflow-y: auto;
+    margin: 0;
+  }
+
+  .sheet {
+    margin-left: max(19rem, calc((100% - var(--max)) / 2));
+  }
+}
+
+/* ===== Picture zoom ===== */
+.posts img {
+  cursor: zoom-in;
+}
+
+.posts a img {
+  cursor: pointer;
+}
+
+.zoom-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: var(--zoom-backdrop, rgba(0, 0, 0, 0.9));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: zoom-out;
+}
+
+.zoom-backdrop.is-open {
+  opacity: 1;
+}
+
+/* Sized to fit the viewport (upscaling small thumbnails), centred by
+   inset + auto margins. Script sets --ar to the picture's aspect ratio. */
+.zoom-img {
+  position: fixed;
+  inset: 0;
+  z-index: 31;
+  margin: auto;
+  width: min(100vw - 2rem, (100vh - 2rem) * var(--ar));
+  height: min(100vh - 2rem, (100vw - 2rem) / var(--ar));
+  width: min(100vw - 2rem, (100dvh - 2rem) * var(--ar));
+  height: min(100dvh - 2rem, (100vw - 2rem) / var(--ar));
+  max-width: none;
+  max-height: none;
+  transform-origin: 0 0;
+  transition: transform 0.3s ease;
+  cursor: zoom-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zoom-backdrop,
+  .zoom-img {
+    transition: none;
+  }
+}

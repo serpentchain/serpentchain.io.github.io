@@ -11,11 +11,60 @@
   <link
     href="https://fonts.googleapis.com/css2?family=VT323&family=Orbitron:wght@500;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
-  <link id="theme-style" rel="stylesheet" href="assets/terminal.css" />
+  <link rel="stylesheet" href="assets/base.css" />
+  <link id="theme-style" rel="stylesheet" href="assets/simple.css" />
+  <script>
+    // Runs in <head> so a saved theme is in place before the page first paints.
+    (function () {
+      // The order the theme button cycles through; the first one is the default
+      var THEMES = [
+        { id: "simple", name: "Simple&Clean" },
+        { id: "terminal", name: "Terminal" },
+        { id: "cyberpunk", name: "Cyberpunk" },
+        { id: "astronomy", name: "Astronomy" }
+      ];
+      var link = document.getElementById("theme-style");
+      var current = 0;
+
+      try {
+        var saved = localStorage.getItem("site-theme");
+        for (var i = 0; i < THEMES.length; i++) {
+          if (THEMES[i].id === saved) current = i;
+        }
+      } catch (e) {}
+
+      function apply(i) {
+        var href = "assets/" + THEMES[i].id + ".css";
+        current = i;
+        if (link.getAttribute("href") !== href) link.setAttribute("href", href);
+      }
+
+      apply(current);
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var btn = document.getElementById("theme-toggle");
+
+        // The button names the theme it switches to
+        function label() {
+          var next = THEMES[(current + 1) % THEMES.length];
+          btn.textContent = next.name;
+          btn.setAttribute("aria-label", "Switch to " + next.name + " theme");
+        }
+
+        label();
+        btn.addEventListener("click", function () {
+          apply((current + 1) % THEMES.length);
+          label();
+          // Only saved on an explicit choice, so a change of default reaches everyone else
+          try { localStorage.setItem("site-theme", THEMES[current].id); } catch (e) {}
+        });
+      });
+    })();
+  </script>
 </head>
 
 <body>
-  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch theme">cyberpunk</button>
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to Terminal theme">Terminal</button>
   <button id="to-top" class="to-top" type="button" aria-label="Back to top" hidden>top</button>
   <main class="sheet">
     
@@ -272,25 +321,6 @@
 
   <script>
     (function () {
-      var THEMES = { terminal: "assets/terminal.css", cyberpunk: "assets/cyberpunk.css" };
-      var link = document.getElementById("theme-style");
-      var btn = document.getElementById("theme-toggle");
-      var current = localStorage.getItem("theme") === "cyberpunk" ? "cyberpunk" : "terminal";
-
-      function apply(theme) {
-        current = theme;
-        link.href = THEMES[theme];
-        btn.textContent = theme === "terminal" ? "cyberpunk" : "terminal";
-        localStorage.setItem("theme", theme);
-      }
-
-      apply(current);
-      btn.addEventListener("click", function () {
-        apply(current === "terminal" ? "cyberpunk" : "terminal");
-      });
-    })();
-
-    (function () {
       var MONTHS = ["january", "february", "march", "april", "may", "june", "july",
         "august", "september", "october", "november", "december"];
       var list = document.getElementById("post-index-list");
@@ -355,6 +385,93 @@
       btn.addEventListener("click", function () {
         window.scrollTo(0, 0);
       });
+    })();
+
+    // Picture zoom: a click/tap (or Enter) on a post picture grows it from where
+    // it sits to fill the screen; click, Escape or scrolling shrinks it back.
+    (function () {
+      var posts = document.querySelector(".posts");
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      var zoomed = null;
+
+      function zoomable(el) {
+        return el.tagName === "IMG" && !el.closest("a") && el.naturalWidth > 0;
+      }
+
+      // Transform that makes an element laid out at `to` appear at `from`
+      function flip(from, to) {
+        return "translate(" + (from.left - to.left) + "px, " + (from.top - to.top) + "px) " +
+          "scale(" + from.width / to.width + ", " + from.height / to.height + ")";
+      }
+
+      function open(thumb, byKeyboard) {
+        var backdrop = document.createElement("div");
+        var img = document.createElement("img");
+        backdrop.className = "zoom-backdrop";
+        img.className = "zoom-img";
+        img.src = thumb.currentSrc || thumb.src;
+        img.alt = thumb.alt;
+        img.style.setProperty("--ar", thumb.naturalWidth / thumb.naturalHeight);
+        backdrop.addEventListener("click", close);
+        img.addEventListener("click", close);
+        document.body.appendChild(backdrop);
+        document.body.appendChild(img);
+
+        // Start exactly over the thumbnail, then animate to the centred size
+        img.style.transition = "none";
+        img.style.transform = flip(thumb.getBoundingClientRect(), img.getBoundingClientRect());
+        img.getBoundingClientRect();
+        img.style.transition = "";
+        img.style.transform = "";
+        backdrop.classList.add("is-open");
+        thumb.style.visibility = "hidden";
+
+        zoomed = { thumb: thumb, img: img, backdrop: backdrop, scrollY: window.scrollY, byKeyboard: byKeyboard };
+      }
+
+      function close() {
+        if (!zoomed) return;
+        var z = zoomed;
+        zoomed = null;
+
+        // Shrink back onto wherever the thumbnail is now
+        z.img.style.transition = "none";
+        z.img.style.transform = "";
+        var to = z.img.getBoundingClientRect();
+        z.img.style.transition = "";
+        z.img.style.transform = flip(z.thumb.getBoundingClientRect(), to);
+        z.backdrop.classList.remove("is-open");
+
+        setTimeout(function () {
+          z.img.remove();
+          z.backdrop.remove();
+          z.thumb.style.visibility = "";
+          if (z.byKeyboard) z.thumb.focus({ preventScroll: true });
+        }, reduceMotion.matches ? 0 : 320);
+      }
+
+      Array.prototype.forEach.call(posts.querySelectorAll("img"), function (img) {
+        if (!img.closest("a")) img.tabIndex = 0;
+      });
+
+      posts.addEventListener("click", function (e) {
+        if (zoomable(e.target)) open(e.target, false);
+      });
+
+      posts.addEventListener("keydown", function (e) {
+        if ((e.key === "Enter" || e.key === " ") && zoomable(e.target)) {
+          e.preventDefault();
+          open(e.target, true);
+        }
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") close();
+      });
+
+      window.addEventListener("scroll", function () {
+        if (zoomed && Math.abs(window.scrollY - zoomed.scrollY) > 40) close();
+      }, { passive: true });
     })();
   </script>
 </body>

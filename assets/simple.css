@@ -1,0 +1,242 @@
+:root {
+  --bg: #ffffff;
+  --ink: #12306b;
+  --blue: #1d4ed8;
+  --blue-deep: #1e3a8a;
+  --muted: #34548f;
+  --faint: #5a73a3;
+  --rule: #dbe3f1;
+  --rule-strong: #b6c7ea;
+  --tint: #f5f8fe;
+  --max: 48rem;
+  --index-top: 4rem;
+  --zoom-backdrop: rgba(255, 255, 255, 0.94);
+}
+
+.theme-toggle,
+.to-top {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--blue);
+  background: var(--bg);
+  border: 1px solid var(--rule-strong);
+  border-radius: 6px;
+  padding: 0.4rem 0.85rem;
+  box-shadow: 0 1px 2px rgba(18, 48, 107, 0.06);
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.theme-toggle:hover,
+.to-top:hover {
+  color: #fff;
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(29, 78, 216, 0.3);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+a:hover {
+  color: var(--blue-deep);
+  border-bottom-color: var(--blue-deep);
+}
+
+.sheet {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  margin: 2.5rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+/* ===== Site header ===== */
+.site-header {
+  text-align: left;
+}
+
+.site-title {
+  font-size: 2.6rem;
+  line-height: 1.1;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.site-tagline {
+  margin: 0 0 0.5rem;
+  color: var(--muted);
+}
+
+.meta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--faint);
+}
+
+/* ===== Posts ===== */
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.post {
+  position: relative;
+  padding: 1.6rem 1.6rem 1.4rem;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(18, 48, 107, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post:hover {
+  border-color: var(--rule-strong);
+  box-shadow: 0 6px 20px -10px rgba(29, 78, 216, 0.25);
+}
+
+.post:target {
+  border-color: var(--blue);
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.post-title {
+  font-size: 1.45rem;
+  line-height: 1.3;
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.post-title a {
+  color: var(--ink);
+  border-bottom: none;
+}
+
+.post-title a:hover {
+  color: var(--blue);
+}
+
+.post-meta {
+  margin: 0 0 0.9rem;
+  font-size: 0.85rem;
+  color: var(--faint);
+}
+
+.post-summary {
+  margin: 0 0 0.9rem;
+  color: var(--ink);
+}
+
+.post-summary img {
+  border-radius: 4px;
+}
+
+.post-tags {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.post-readmore {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.post-readmore a {
+  border-bottom: none;
+}
+
+.post-readmore a:hover {
+  border-bottom: 1px solid var(--blue-deep);
+}
+
+/* ===== Post index ===== */
+.post-index {
+  margin: 0 0 2.5rem;
+  font-family: "JetBrains Mono", "Consolas", monospace;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.post-index-title {
+  margin: 0 0 0.7rem;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.post-index-list li {
+  margin: 0 0 0.45rem;
+}
+
+.post-index-list a {
+  color: var(--muted);
+}
+
+.post-index-list a:hover {
+  color: var(--blue);
+}
+
+.post-index-date {
+  color: var(--faint);
+}
+
+/* ===== Picture zoom ===== */
+.zoom-img {
+  border-radius: 4px;
+  box-shadow: 0 20px 60px -20px rgba(18, 48, 107, 0.45);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 36rem) {
+  .sheet {
+    padding: 2.5rem 1.2rem 4rem;
+  }
+
+  .site-title {
+    font-size: 2.1rem;
+  }
+
+  .post {
+    padding: 1.3rem 1.2rem 1.1rem;
+  }
+
+  .post-title {
+    font-size: 1.25rem;
+  }
+}

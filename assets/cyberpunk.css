@@ -11,31 +11,13 @@
   --violet: #b66bff;
   --amber: #ffd166;
   --max: 48rem;
+  --index-top: 4rem;
+  --zoom-backdrop: rgba(6, 6, 13, 0.92);
 }
 
-/* Fonts: Orbitron, Inter, JetBrains Mono (load in HTML <head>) */
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  -webkit-text-size-adjust: 100%;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
-/* ===== Theme toggle + back-to-top buttons ===== */
 .theme-toggle,
 .to-top {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 20;
   font-family: "JetBrains Mono", "Consolas", monospace;
   font-size: 0.72rem;
   letter-spacing: 0.12em;
@@ -45,7 +27,6 @@ html {
   border: 1px solid rgba(0, 247, 255, 0.5);
   border-radius: 4px;
   padding: 0.4rem 0.8rem;
-  cursor: pointer;
   backdrop-filter: blur(6px);
   text-shadow: 0 0 8px rgba(0, 247, 255, 0.6);
   transition: color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
@@ -56,12 +37,6 @@ html {
   color: #fff;
   border-color: var(--magenta);
   box-shadow: 0 0 16px -2px rgba(255, 43, 214, 0.7);
-}
-
-/* Shown by script once the page is scrolled down */
-.to-top {
-  top: auto;
-  bottom: 1rem;
 }
 
 body {
@@ -80,17 +55,6 @@ body {
   background-attachment: fixed;
   min-height: 100vh;
 }
-
-img {
-    max-width: 80%;
-    max-height: 80%;
-}
-
-.portrait {
-    height: 693px;
-    width: 699px;
-}
-
 
 a {
   color: var(--cyan);
@@ -172,7 +136,6 @@ hr {
   box-shadow:
     0 0 0 1px rgba(0, 0, 0, 0.3),
     0 18px 40px -24px rgba(0, 247, 255, 0.4);
-  scroll-margin-top: 1.5rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
@@ -271,23 +234,12 @@ hr {
   text-shadow: 0 0 8px rgba(255, 43, 214, 0.5);
 }
 
-.post-index-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 .post-index-list li {
   margin: 0 0 0.45rem;
 }
 
-/* Hanging indent so wrapped names line up after "MMDDYYYY - " */
 .post-index-list a {
-  display: block;
-  padding-left: 11ch;
-  text-indent: -11ch;
   color: var(--muted);
-  border-bottom: none;
 }
 
 .post-index-list a:hover {
@@ -297,23 +249,6 @@ hr {
 
 .post-index-date {
   color: var(--violet);
-}
-
-/* Wide screens: pin the index to the left and keep the posts clear of it */
-@media (min-width: 64rem) {
-  .post-index {
-    position: fixed;
-    top: 4rem;
-    left: 1.5rem;
-    width: 16rem;
-    max-height: calc(100vh - 5.5rem);
-    overflow-y: auto;
-    margin: 0;
-  }
-
-  .sheet {
-    margin-left: max(19rem, calc((100% - var(--max)) / 2));
-  }
 }
 
 /* ===== Responsive ===== */
