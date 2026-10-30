@@ -6,7 +6,8 @@
 **Author:** Adam Androulidakis<br>
 **Email:** serpentchain@gmail.com<br>
 **Date:** 1 June 2022<br>
-**Revised:** 27 October 2026<br>
+**1st Revision:** 17 June 2026<br>
+**Last Revised:** 27 October 2026<br>
 
 ---
 
